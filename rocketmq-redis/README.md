@@ -25,7 +25,7 @@ Table of Contents
 
 ## 1.1. Brief introduction
 
-Rocketmq redis replicator implement Redis Replication protocol written in java. It can parse, filter, broadcast the RDB and AOF events in a real time manner and downstream these event to RocketMQ.  
+Rocketmq redis replicator implement Redis Replication protocol written in java. It can parse, filter, broadcast the RDB and AOF events in a real time manner and downstream these events to RocketMQ.  
 
 ## 1.2. Architecture
 
@@ -48,7 +48,7 @@ Rocketmq redis replicator implement Redis Replication protocol written in java. 
 ## 2.1. Requirements  
 jdk 1.8+  
 maven-3.3.1+  
-redis 2.6 - 5.0.x  
+redis 2.6 - 6.2.x  
 rocketmq 4.2.0 or higher  
 
 ## 2.2. Install from source code  
@@ -165,23 +165,23 @@ But you can specify your own configuration using `Configure` like following:
   
 ## 5.1. Built-in command parser  
 
-
-|**commands**|**commands**  |  **commands**  |**commands**|**commands**  | **commands**       |
-| ---------- | ------------ | ---------------| ---------- | ------------ | ------------------ |    
-|  **PING**  |  **APPEND**  |  **SET**       |  **SETEX** |  **MSET**    |  **DEL**           |  
-|  **SADD**  |  **HMSET**   |  **HSET**      |  **LSET**  |  **EXPIRE**  |  **EXPIREAT**      |  
-| **GETSET** | **HSETNX**   |  **MSETNX**    | **PSETEX** | **SETNX**    |  **SETRANGE**      |  
-| **HDEL**   | **UNLINK**   |  **SREM**      | **LPOP**   |  **LPUSH**   | **LPUSHX**         |  
-| **LRem**   | **RPOP**     |  **RPUSH**     | **RPUSHX** |  **ZREM**    |  **ZINTERSTORE**   |  
-| **INCR**   |  **DECR**    |  **INCRBY**    |**PERSIST** |  **SELECT**  | **FLUSHALL**       |  
-|**FLUSHDB** |  **HINCRBY** | **ZINCRBY**    | **MOVE**   |  **SMOVE**   |**BRPOPLPUSH**      |  
-|**PFCOUNT** |  **PFMERGE** | **SDIFFSTORE** |**RENAMENX**| **PEXPIREAT**|**SINTERSTORE**     |  
-|**ZADD**    | **BITFIELD** |**SUNIONSTORE** |**RESTORE** | **LINSERT**  |**ZREMRANGEBYLEX**  |  
-|**GEOADD**  | **PEXPIRE**  |**ZUNIONSTORE** |**EVAL**    |  **SCRIPT**  |**ZREMRANGEBYRANK** |  
-|**PUBLISH** |  **BITOP**   |**SETBIT**      | **SWAPDB** | **PFADD**    |**ZREMRANGEBYSCORE**|  
-|**RENAME**  |  **MULTI**   |  **EXEC**      | **LTRIM**  |**RPOPLPUSH** |     **SORT**       |  
-|**EVALSHA** | **ZPOPMAX**  | **ZPOPMIN**    | **XACK**   | **XADD**     |  **XCLAIM**        |  
-|**XDEL**    | **XGROUP**   | **XTRIM**      |**XSETID**  |              |                    |  
+|**commands**|**commands**    |  **commands**       |**commands**|**commands**  | **commands**       |
+| ---------- | -------------- | --------------------| ---------- | ------------ | ------------------ |    
+|  **PING**  |  **APPEND**    |  **SET**            |  **SETEX** |  **MSET**    |  **DEL**           |  
+|  **SADD**  |  **HMSET**     |  **HSET**           |  **LSET**  |  **EXPIRE**  |  **EXPIREAT**      |  
+| **GETSET** | **HSETNX**     |  **MSETNX**         | **PSETEX** | **SETNX**    |  **SETRANGE**      |  
+| **HDEL**   | **UNLINK**     |  **SREM**           | **LPOP**   |  **LPUSH**   | **LPUSHX**         |  
+| **LRem**   | **RPOP**       |  **RPUSH**          | **RPUSHX** |  **ZREM**    |  **ZINTERSTORE**   |  
+| **INCR**   |  **DECR**      |  **INCRBY**         |**PERSIST** |  **SELECT**  | **FLUSHALL**       |  
+|**FLUSHDB** |  **HINCRBY**   | **ZINCRBY**         | **MOVE**   |  **SMOVE**   |**BRPOPLPUSH**      |  
+|**PFCOUNT** |  **PFMERGE**   | **SDIFFSTORE**      |**RENAMENX**| **PEXPIREAT**|**SINTERSTORE**     |  
+|**ZADD**    | **BITFIELD**   |**SUNIONSTORE**      |**RESTORE** | **LINSERT**  |**ZREMRANGEBYLEX**  |  
+|**GEOADD**  | **PEXPIRE**    |**ZUNIONSTORE**      |**EVAL**    |  **SCRIPT**  |**ZREMRANGEBYRANK** |  
+|**PUBLISH** |  **BITOP**     |**SETBIT**           | **SWAPDB** | **PFADD**    |**ZREMRANGEBYSCORE**|  
+|**RENAME**  |  **MULTI**     |  **EXEC**           | **LTRIM**  |**RPOPLPUSH** |     **SORT**       |  
+|**EVALSHA** | **ZPOPMAX**    | **ZPOPMIN**         | **XACK**   | **XADD**     |  **XCLAIM**        |  
+|**XDEL**    | **XGROUP**     | **XTRIM**           | **XSETID** | **COPY**     |  **LMOVE**         |  
+|**BLMOVE**  | **ZDIFFSTORE** | **GEOSEARCHSTORE**  |            |              |                    |  
   
 ## 5.2. EOFException
   
@@ -223,4 +223,4 @@ But you can specify your own configuration using `Configure` like following:
     repl-backlog-ttl
     repl-ping-slave-periods
 ```
-`repl-ping-slave-period` **MUST** less than `readTimeout`, default `readTimeout` is 30 seconds
+`repl-ping-slave-period` **MUST** less than `readTimeout`, default `readTimeout` is 60 seconds
